@@ -176,18 +176,23 @@ outline:var(--dsw-focus-ring-width,2px) solid var(--dsw-focus-ring-color,current
     class Guard extends React.Component {
       constructor(props) {
         super(props);
-        this.state = { failed: false };
+        this.state = { failed: false, message: undefined };
       }
       static getDerivedStateFromError(error) {
-        if (typeof window !== 'undefined') window.__checkpointError = String((error && error.stack) || error);
-        return { failed: true };
+        const message = String((error && error.stack) || error);
+        if (typeof window !== 'undefined') window.__checkpointError = message;
+        return { failed: true, message };
       }
       render() {
         if (this.state.failed) {
+          // The message stays on screen so a failure is diagnosable without devtools.
           return h('div', { className: 'cp-page' },
             h('div', { className: 'cp-empty' },
               h('strong', null, this.props.t('appError')),
-              h('div', null, this.props.t('appErrorHint'))));
+              h('div', null, this.props.t('appErrorHint')),
+              this.state.message === undefined
+                ? null
+                : h('pre', { style: { marginTop: 12, textAlign: 'left', fontSize: 11, opacity: 0.8, whiteSpace: 'pre-wrap' } }, this.state.message)));
         }
         return this.props.children;
       }
@@ -417,7 +422,7 @@ outline:var(--dsw-focus-ring-width,2px) solid var(--dsw-focus-ring-color,current
 
     return {
       name: 'checkpoint',
-      inject: ['slots', 'layout', 'workspaces', 'uiWorkspace'],
+      inject: ['slots', 'layout', 'workspaces', 'uiWorkspace', 'sessions'],
       apply,
     };
   },
