@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Mission Control",
+    "description": "Abre un panel con todas las sesiones de DeepSeek Harness: estado en vivo, modelo, cronómetros por tarea, tareas completadas, actividad reciente y coste estimado."
+  }
+}
