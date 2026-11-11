@@ -1,0 +1,3 @@
+- insert:
+    - id: mission-control
+      name: '@local/mission-control'
