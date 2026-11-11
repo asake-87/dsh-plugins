@@ -1,0 +1,38 @@
+{
+  "$comment": "Machine-readable catalog of the plugins in this repository. Add one entry per plugin directory; keep the order aligned with the README table.",
+  "version": 1,
+  "dsh": {
+    "minVersion": "0.2.2-rc.1",
+    "webBundle": "@deepseek-ai/dsh-web-app"
+  },
+  "plugins": [
+    {
+      "id": "mission-control",
+      "name": "@local/mission-control",
+      "path": "./mission-control",
+      "title": "Mission Control",
+      "summary": "Session dashboard: status, current and next task, progress, risk signals and chat navigation.",
+      "status": "stable",
+      "kind": "client-panel",
+      "slots": ["sidebar.panellist", "main"],
+      "services": ["sessions", "uiWorkspace"],
+      "clientInject": ["@deepseek-ai/dsh-client-ui-layout", "@deepseek-ai/dsh-client-ui-session"],
+      "config": {
+        "staleMinutes": { "type": "number", "default": 20, "description": "Minutes without a plan change before a session reads as stalled." }
+      }
+    },
+    {
+      "id": "checkpoint",
+      "name": "@local/checkpoint",
+      "path": "./checkpoint",
+      "title": "Checkpoint",
+      "summary": "Workspace inventory: every workspace with its path, sessions and quick chat navigation.",
+      "status": "stable",
+      "kind": "client-panel",
+      "slots": ["sidebar.panellist", "main"],
+      "services": ["workspaces", "sessions", "uiWorkspace"],
+      "clientInject": ["@deepseek-ai/dsh-client-ui-layout", "@deepseek-ai/dsh-client-ui-workspace"],
+      "config": {}
+    }
+  ]
+}
