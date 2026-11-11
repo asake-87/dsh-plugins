@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Mission Control",
+    "description": "Opens a dashboard of every DeepSeek Harness session: live status, model, per-task timers, tool calls, completed tasks, recent activity and estimated cost."
+  }
+}
