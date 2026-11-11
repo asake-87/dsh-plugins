@@ -72,6 +72,7 @@ Mission Control reads one knob from its plugin row config:
 ## Repository layout
 
 ```text
+publish.cmd           publish this repository to GitHub in one command
 tools/render-check.md deterministic render harness and its pitfalls
 mission-control/
   package.json        bundle manifest + dsh.client wiring
@@ -115,7 +116,7 @@ Where the host does not publish a value, the plugins say so rather than guessing
 
 Both plugins were validated with a deterministic render harness: the real module is evaluated against a fake module loader, rendered with the props the slot renderer actually passes, and asserted on the resulting element tree (cards, badges, buttons, navigation calls, filters).
 
-See [`tools/render-check.md`](tools/render-check.md) for a reference harness and the pitfalls that produced false test results.
+Run it by evaluating the bundle, applying it to a fake context, and walking the returned elements. A small reference harness lives in [`tools/render-check.md`](tools/render-check.md).
 
 ## License
 

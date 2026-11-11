@@ -43,7 +43,7 @@ const ctx = {
     register: (decl, component) => { views.push({ decl, component }); return () => {}; },
   },
   layout: {},
-  sessions:   { list: { getSnapshot: () => catalog,    subscribe: () => () => {} }, refresh: async () => {} },
+  sessions:   { list: { getSnapshot: () => catalog,  subscribe: () => () => {} }, refresh: async () => {} },
   workspaces: { list: { getSnapshot: () => workspaces, subscribe: () => () => {} }, refresh: async () => {} },
   uiWorkspace: { openSession: (id) => calls.push(id) },
 };
@@ -60,7 +60,7 @@ Walk the element tree, counting nodes by `type` and `className`, and invoke
 ```js
 walk({ type: views.find((v) => v.decl.name === 'main').component,
        props: { ctx, t: (key) => key } });
-// -> count <article class="mc-card">, <button class="mc-open">, etc.
+// → count <article class="mc-card">, <button class="mc-open">, etc.
 ```
 
 ## Pitfalls that cost real debugging time
